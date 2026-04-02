@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Memory Orchestration in LLM</title>
+    <meta
+      name="description"
+      content="Event memory orchestration: альтернативная ветвь памяти для LLM, где события образуют граф связей вместо плоского retrieval."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <a class="brand" href="#top">
+            <span>InsideMemory</span>
+            <span class="brand-mark"></span>
+            <span>Event Memory Orchestration</span>
+          </a>
+          <div class="topbar-links">
+            <a href="#problem">Problem</a>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#classification">Classification</a>
+            <a href="#github">GitHub</a>
+          </div>
+        </nav>
+
+        <section class="hero-copy reveal" id="top">
+          <h1>Событие не должно исчезать, когда оно покидает окно внимания.</h1>
+          <p class="lead">
+            Event memory orchestration строит память как граф событий,
+            адаптирующийся к поступлению новых фактов. Это не новый слой retrieval
+            для RAG. Это отдельная ветвь организации памяти, где знание хранится
+            как динамика связей, а не как очередь фрагментов контекста.
+          </p>
+        </section>
+
+        <section class="graph-stage reveal" aria-label="Интерактивный граф событий">
+          <div class="graph-copy">
+            <p class="eyebrow">Interactive Event Graph</p>
+          </div>
+          <div class="graph-frame">
+            <canvas id="memory-graph" width="1440" height="900"></canvas>
+            <div class="graph-hud" id="graph-hud">
+              <p class="hud-label">Selected Event</p>
+              <h2>Memory Trigger</h2>
+              <p class="hud-text">
+                Активация узла включает локальную карту зависимостей.
+              </p>
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <main>
+        <section class="narrative narrative-dark reveal" id="problem">
+          <div class="section-meta">
+            <p class="eyebrow">Problem</p>
+            <span class="section-index">01</span>
+          </div>
+          <div class="narrative-body">
+            <h2>Контекст решает задачу внимания, но не задачу памяти.</h2>
+            <p>
+              Сегодня память LLM слишком часто редуцируется до того, что сейчас
+              помещено в окно контекста. Это означает, что событие существует
+              только пока его токены находятся в зоне активного inference.
+              Покинув окно, оно перестает быть полноценной частью общей структуры.
+            </p>
+            <p>
+              Вторая проблема глубже: события не связаны между собой за пределами
+              внимания модели. Даже если два факта были когда-то рядом, это не
+              значит, что их причинная или временная зависимость сохранится как
+              самостоятельный объект памяти.
+            </p>
+          </div>
+        </section>
+
+        <section class="narrative narrative-light reveal" id="manifesto">
+          <div class="section-meta">
+            <p class="eyebrow">Manifesto</p>
+            <span class="section-index">02</span>
+          </div>
+          <div class="narrative-body">
+            <h2>Память должна хранить не только факт, но и траекторию события.</h2>
+            <p>
+              Мой граф памяти ориентирован на поступление новых событий и на
+              перестройку уже существующих маршрутов доступа. Важен не только
+              ответ на вопрос “что было”, но и форма связи “что из этого
+              последовало”, “что это активирует”, “какие узлы должны усилиться”.
+            </p>
+            <p>
+              Это все еще не человеческая память. Но это движение ближе к ней,
+              чем системы, где прошлое хранится как статический набор чанков для
+              последующего retrieval. Цель проекта в том, чтобы подвести модели к
+              real-time памяти через слой случайных и полуслучайных связей,
+              напоминающих поведение живых нейронных ассоциаций.
+            </p>
+          </div>
+        </section>
+
+        <section class="narrative narrative-dark reveal" id="classification">
+          <div class="section-meta">
+            <p class="eyebrow">Classification</p>
+            <span class="section-index">03</span>
+          </div>
+          <div class="narrative-body">
+            <h2>Классификация памяти для LLM должна различать retrieval и orchestration.</h2>
+            <div class="classification-list">
+              <article>
+                <span>Context-Bound Memory</span>
+                <p>
+                  Память почти равна окну внимания. Система работает быстро, но
+                  знание нестабильно и постоянно требует повторной загрузки.
+                </p>
+              </article>
+              <article>
+                <span>RAG Systems</span>
+                <p>
+                  Внешняя память в виде документов и поискового слоя. Хорошо
+                  возвращает данные, но не строит автономную графовую логику
+                  событий.
+                </p>
+              </article>
+              <article class="is-accent">
+                <span>Event Memory Orchestration</span>
+                <p>
+                  Альтернативная ветвь развития. Память строится как адаптивный
+                  граф событий, где главное не поиск похожего куска, а управление
+                  связями, активацией и эволюцией структуры.
+                </p>
+              </article>
+              <article>
+                <span>Real-Time Neural Memory</span>
+                <p>
+                  Дальняя цель: память с постоянно возникающими случайными
+                  связями, похожими на живые ассоциативные контуры.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="narrative narrative-light narrative-cta reveal" id="github">
+          <div class="section-meta">
+            <p class="eyebrow">Repository</p>
+            <span class="section-index">04</span>
+          </div>
+          <div class="narrative-body">
+            <h2>Посмотреть код, архитектуру графа и направление развития проекта.</h2>
+            <a
+              class="cta-link"
+              href="https://github.com/your-org/your-project"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open GitHub Repository
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
