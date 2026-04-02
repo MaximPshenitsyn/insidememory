@@ -71,6 +71,14 @@ canvas {
   gap: 14px;
 }
 
+.topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
 .brand {
   font-size: 0.9rem;
   font-weight: 700;
@@ -101,6 +109,41 @@ canvas {
 .topbar-links a:hover,
 .cta-link:hover {
   color: var(--accent);
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.language-switcher__button {
+  min-width: 48px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.language-switcher__button:hover {
+  color: var(--text);
+}
+
+.language-switcher__button.is-active {
+  background: var(--accent);
+  color: var(--white);
 }
 
 .hero-copy {
@@ -330,6 +373,10 @@ h2 {
     padding-bottom: 28px;
   }
 
+  .topbar-actions {
+    align-items: stretch;
+  }
+
   .narrative {
     gap: 12px;
   }
@@ -354,6 +401,15 @@ h2 {
     right: 12px;
     bottom: 12px;
     width: auto;
+  }
+
+  .topbar-links,
+  .topbar-actions {
+    width: 100%;
+  }
+
+  .language-switcher {
+    align-self: flex-start;
   }
 
   .cta-link {

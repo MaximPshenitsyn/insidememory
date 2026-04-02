@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Memory Orchestration in LLM</title>
     <meta
+      id="page-description"
       name="description"
-      content="Event memory orchestration: альтернативная ветвь памяти для LLM, где события образуют граф связей вместо плоского retrieval."
+      content="Event memory orchestration: an alternative memory branch for LLMs where events form a graph of relationships instead of a flat retrieval layer."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,38 +24,43 @@
           <a class="brand" href="#top">
             <span>InsideMemory</span>
             <span class="brand-mark"></span>
-            <span>Event Memory Orchestration</span>
+            <span data-i18n="brand.project">Event Memory Orchestration</span>
           </a>
-          <div class="topbar-links">
-            <a href="#problem">Problem</a>
-            <a href="#manifesto">Manifesto</a>
-            <a href="#classification">Classification</a>
-            <a href="#github">GitHub</a>
+          <div class="topbar-actions">
+            <div class="topbar-links">
+              <a href="#problem" data-i18n="nav.problem">Problem</a>
+              <a href="#manifesto" data-i18n="nav.manifesto">Manifesto</a>
+              <a href="#classification" data-i18n="nav.classification">Classification</a>
+              <a href="#github">GitHub</a>
+            </div>
+            <div class="language-switcher" aria-label="Language switcher">
+              <button class="language-switcher__button is-active" type="button" data-lang-switch="en">
+                EN
+              </button>
+              <button class="language-switcher__button" type="button" data-lang-switch="ru">
+                RU
+              </button>
+            </div>
           </div>
         </nav>
 
         <section class="hero-copy reveal" id="top">
-          <h1>Событие не должно исчезать, когда оно покидает окно внимания.</h1>
-          <p class="lead">
-            Event memory orchestration строит память как граф событий,
-            адаптирующийся к поступлению новых фактов. Это не новый слой retrieval
-            для RAG. Это отдельная ветвь организации памяти, где знание хранится
-            как динамика связей, а не как очередь фрагментов контекста.
+          <h1 data-i18n="hero.title">An event should not disappear when it leaves the attention window.</h1>
+          <p class="lead" data-i18n="hero.lead">
+            Event memory orchestration builds memory as a graph of events that adapts to incoming facts. It is not another retrieval layer for RAG. It is a separate branch of memory organization where knowledge is stored as evolving relationships rather than as a queue of context fragments.
           </p>
         </section>
 
         <section class="graph-stage reveal" aria-label="Интерактивный граф событий">
           <div class="graph-copy">
-            <p class="eyebrow">Interactive Event Graph</p>
+            <p class="eyebrow" data-i18n="graph.eyebrow">Interactive Event Graph</p>
           </div>
           <div class="graph-frame">
             <canvas id="memory-graph" width="1440" height="900"></canvas>
             <div class="graph-hud" id="graph-hud">
-              <p class="hud-label">Selected Event</p>
+              <p class="hud-label" data-i18n="graph.hudLabel">Selected Event</p>
               <h2>Memory Trigger</h2>
-              <p class="hud-text">
-                Активация узла включает локальную карту зависимостей.
-              </p>
+              <p class="hud-text">Activating a node reveals its local dependency map.</p>
             </div>
           </div>
         </section>
@@ -63,85 +69,66 @@
       <main>
         <section class="narrative narrative-dark reveal" id="problem">
           <div class="section-meta">
-            <p class="eyebrow">Problem</p>
+            <p class="eyebrow" data-i18n="sections.problem.eyebrow">Problem</p>
             <span class="section-index">01</span>
           </div>
           <div class="narrative-body">
-            <h2>Контекст решает задачу внимания, но не задачу памяти.</h2>
-            <p>
-              Сегодня память LLM слишком часто редуцируется до того, что сейчас
-              помещено в окно контекста. Это означает, что событие существует
-              только пока его токены находятся в зоне активного inference.
-              Покинув окно, оно перестает быть полноценной частью общей структуры.
+            <h2 data-i18n="sections.problem.title">Context solves attention, but not memory.</h2>
+            <p data-i18n="sections.problem.p1">
+              Today, LLM memory is too often reduced to whatever is currently inside the context window. That means an event exists only while its tokens remain inside the active inference zone. Once it leaves the window, it stops being a full part of the larger structure.
             </p>
-            <p>
-              Вторая проблема глубже: события не связаны между собой за пределами
-              внимания модели. Даже если два факта были когда-то рядом, это не
-              значит, что их причинная или временная зависимость сохранится как
-              самостоятельный объект памяти.
+            <p data-i18n="sections.problem.p2">
+              The second problem goes deeper: events are not meaningfully connected outside the model's immediate attention. Even if two facts once appeared together, that does not mean their causal or temporal dependency survives as a persistent memory object.
             </p>
           </div>
         </section>
 
         <section class="narrative narrative-light reveal" id="manifesto">
           <div class="section-meta">
-            <p class="eyebrow">Manifesto</p>
+            <p class="eyebrow" data-i18n="sections.manifesto.eyebrow">Manifesto</p>
             <span class="section-index">02</span>
           </div>
           <div class="narrative-body">
-            <h2>Память должна хранить не только факт, но и траекторию события.</h2>
-            <p>
-              Мой граф памяти ориентирован на поступление новых событий и на
-              перестройку уже существующих маршрутов доступа. Важен не только
-              ответ на вопрос “что было”, но и форма связи “что из этого
-              последовало”, “что это активирует”, “какие узлы должны усилиться”.
+            <h2 data-i18n="sections.manifesto.title">Memory should store not only a fact, but the trajectory of an event.</h2>
+            <p data-i18n="sections.manifesto.p1">
+              This memory graph is designed around incoming events and the restructuring of existing access routes. What matters is not only the answer to "what happened", but also the relationship pattern: "what followed from this", "what does this activate", and "which nodes should become stronger".
             </p>
-            <p>
-              Это все еще не человеческая память. Но это движение ближе к ней,
-              чем системы, где прошлое хранится как статический набор чанков для
-              последующего retrieval. Цель проекта в том, чтобы подвести модели к
-              real-time памяти через слой случайных и полуслучайных связей,
-              напоминающих поведение живых нейронных ассоциаций.
+            <p data-i18n="sections.manifesto.p2">
+              This is still not human memory. But it moves closer to it than systems where the past is stored as a static set of chunks for later retrieval. The project's goal is to push models toward real-time memory through a layer of random and semi-random links that resemble living neural associations.
             </p>
           </div>
         </section>
 
         <section class="narrative narrative-dark reveal" id="classification">
           <div class="section-meta">
-            <p class="eyebrow">Classification</p>
+            <p class="eyebrow" data-i18n="sections.classification.eyebrow">Classification</p>
             <span class="section-index">03</span>
           </div>
           <div class="narrative-body">
-            <h2>Классификация памяти для LLM должна различать retrieval и orchestration.</h2>
+            <h2 data-i18n="sections.classification.title">Memory classification for LLMs should distinguish retrieval from orchestration.</h2>
             <div class="classification-list">
               <article>
-                <span>Context-Bound Memory</span>
-                <p>
-                  Память почти равна окну внимания. Система работает быстро, но
-                  знание нестабильно и постоянно требует повторной загрузки.
+                <span data-i18n="sections.classification.items.context.title">Context-Bound Memory</span>
+                <p data-i18n="sections.classification.items.context.text">
+                  Memory is almost identical to the attention window. The system is fast, but knowledge is unstable and constantly requires reloading.
                 </p>
               </article>
               <article>
-                <span>RAG Systems</span>
-                <p>
-                  Внешняя память в виде документов и поискового слоя. Хорошо
-                  возвращает данные, но не строит автономную графовую логику
-                  событий.
+                <span data-i18n="sections.classification.items.rag.title">RAG Systems</span>
+                <p data-i18n="sections.classification.items.rag.text">
+                  External memory in the form of documents and a search layer. It retrieves data well, but does not build an autonomous graph logic of events.
                 </p>
               </article>
               <article class="is-accent">
-                <span>Event Memory Orchestration</span>
-                <p>
-                  Альтернативная ветвь развития. Память строится как адаптивный
-                  граф событий, где главное не поиск похожего куска, а управление
-                  связями, активацией и эволюцией структуры.
+                <span data-i18n="sections.classification.items.orchestration.title">Event Memory Orchestration</span>
+                <p data-i18n="sections.classification.items.orchestration.text">
+                  An alternative development branch. Memory is built as an adaptive event graph where the key task is not retrieving a similar fragment, but managing relationships, activation, and structural evolution.
                 </p>
               </article>
               <article>
-                <span>Real-Time Neural Memory</span>
-                <p>
-                  Дальняя цель: память с постоянно возникающими случайными
-                  связями, похожими на живые ассоциативные контуры.
+                <span data-i18n="sections.classification.items.realtime.title">Real-Time Neural Memory</span>
+                <p data-i18n="sections.classification.items.realtime.text">
+                  A long-term target: memory with continuously emerging random links similar to living associative circuits.
                 </p>
               </article>
             </div>
@@ -150,16 +137,17 @@
 
         <section class="narrative narrative-light narrative-cta reveal" id="github">
           <div class="section-meta">
-            <p class="eyebrow">Repository</p>
+            <p class="eyebrow" data-i18n="sections.repository.eyebrow">Repository</p>
             <span class="section-index">04</span>
           </div>
           <div class="narrative-body">
-            <h2>Посмотреть код, архитектуру графа и направление развития проекта.</h2>
+            <h2 data-i18n="sections.repository.title">Explore the code, graph architecture, and project direction.</h2>
             <a
               class="cta-link"
               href="https://github.com/your-org/your-project"
               target="_blank"
               rel="noreferrer"
+              data-i18n="sections.repository.cta"
             >
               Open GitHub Repository
             </a>
